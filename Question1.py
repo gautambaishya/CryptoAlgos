@@ -1,18 +1,17 @@
-import string
-def print_function(List): 
-    return ''.join(List)
-
-def permute(a, l, r): 
-  if l == r: 
-        print(print_function(a))
-  else:
-        for i in range(l, r + 1): 
-            a[l], a[i] = a[i], a[l] 
-            permute(a, l + 1, r) 
-            a[l], a[i] = a[i], a[l] 
+def toString(list_input): 
+    return (''.join(list_input)) 
   
-string = string.ascii_lowercase
-print("Original String= ", string)
+def recurive_permute(a, left, right): 
+    if (left==right):     #Base Case
+        print(toString(a)) 
+    else: 
+        for i in range(left,right+1): 
+            a[left], a[i] = a[i], a[left] 
+            recurive_permute(a, left+1, right) 
+            a[left], a[i] = a[i], a[left] 
+  
+
+string = "abcdefghijklmnopqrstuvwxyz"
 n = len(string) 
-a = list(string) 
-permute(a, 0, n-1)
+arr = list(string) 
+recurive_permute(arr, 0, n-1) 
